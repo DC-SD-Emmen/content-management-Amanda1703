@@ -1,6 +1,6 @@
 <?php
 
-    class DBConnect {
+    class Database {
 
         private $servername = "mysql";
         private $username = "root";
@@ -18,7 +18,14 @@
                 echo "Connection failed: " . $e->getMessage();
               }
         }
+
+        public function getConnection() {
+          return $this->conn;
+        }
+
+
     }
 
-
+    
+  
 ?>
