@@ -1,6 +1,5 @@
 <?php
     
-
     class UserManager {
 
         private $conn;
@@ -9,8 +8,7 @@
             $this->conn = $conn;
         }
 
-
-        public function insertData($username, $password;) {
+        public function insertData($username, $password) {
 
             //INSERT sql statement maken
             //$this-conn gebruiken om de SQL naar database te versturen
@@ -26,9 +24,15 @@
             } catch(PDOException $e) {
               echo "Error insert function: " . $e->getMessage();
               exit();
-            }
-          } 
+           }
+        }
+
+        $ username>htmlspecialchars
+   
+   
+   
     }
+
 
 
 ?>
