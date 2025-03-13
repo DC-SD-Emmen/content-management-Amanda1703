@@ -1,0 +1,137 @@
+td {
+    width: 150px;
+    border: 2px solid black;   
+}
+
+body {
+    background-color: rgb(138, 135, 136);
+    /* height: 4000px; */
+}
+
+h1{
+    color: white;
+    padding-left: 50%;
+}
+
+p{
+    color: white;
+    padding-left: 33%;
+}
+
+.flex{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 37.5%;
+    z-index: 1;
+    bottom: 200px;
+    background-color: rgb(100, 99, 100);
+    margin: auto;
+    height: fill screen;
+
+}
+
+.flexr{
+    padding-top: 20px;
+    height:10px;
+    width: 10px;
+    display:flex; 
+    justify-content:center ;
+    align-items:center;
+}
+
+#game-form {
+    display: none;
+}
+
+.picture{
+    height: 90%;
+    width: 90%;
+    margin: 30px;
+    object-fit:cover;
+}
+
+/* .positie {
+    display: flex;
+    justify-content: center;
+} */
+
+#games-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+    justify-content: center;
+
+}
+
+.flexer{
+    display:  flex;
+    justify-content: space-around;
+}
+
+#game-form{
+    margin: auto;
+    height: fill screen;
+    width: 50%;
+    object-position: center;
+}
+
+.smallPicture{
+    width: 10%;
+    height: 20px;
+    object-fit: cover;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    color:white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    padding-left: 15px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+#add-button {
+    background: none;
+    border: none;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#gridItem1, #gridItem3{
+    grid-column: 1/ span 3;
+}
+#demo{
+    display: none;
+}
+
+#gridItem5{
+    background-color: rgb(246, 181, 181);
+    border-radius: 10px;
+}
+
+#gridItem1 {
+    background-color: rgb(246, 181, 181);
+    border-radius: 10px;
+    height: 50px;
+    padding-top: 15px;
+}
+
+#bar{
+    font-size: 35px;
+}
+
+#login-button {
+    background: none;
+    border: none;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    cursor: pointer;
+}

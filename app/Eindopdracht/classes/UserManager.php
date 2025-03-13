@@ -41,7 +41,7 @@
             
             if ($user && password_verify($password, $user['password'])) {
               $_SESSION['username'] = $user['username'];
-              echo "<br>" . "welkom". "<br>" . $_SESSION['username'] . "<br>";
+              header("Location: index.php");
             } else {
               echo "Password or username incorrect";
               exit();
@@ -67,22 +67,6 @@
             }
         }     
         
-        // public function Ugames () {
-
-        //   try{
-        //     $stmt = $this->conn->prepare("SELECT*FROM user_games WHERE user_id = :user_id AND game_id = :game_id");
-        //     $stmt->bindParam(':user_id', $user_id);
-        //     $stmt->bindParam(':game_id, $game_id');
-        //     $stmt->execute();
-        
-        //     $id = $stmt->fetch(PDO::FETCH_ASSOC);
-          
-        //   } catch(PDOException $e) {
-        //     echo "ERROR: " . $e->getMessage();
-        //   }
-
-          
-        // }
     }
            
 ?>

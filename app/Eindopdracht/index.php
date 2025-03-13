@@ -1,14 +1,33 @@
 <?php
 
+session_start();
+
 spl_autoload_register(function ($class) {
     include 'classes/' . $class . '.php';
 });
 
-    include 'userregister.php';
-    include 'userLogin.php';
-    include 'userHandling.php';
-    include 'javascript.js';
-    include 'game-form.php';
+$db = new Database();
+$gameManager = new GameManager($db);
+
+if ($_SERVER ["REQUEST_METHOD"] == "POST") {
+
+    if(isset($_SESSION['username'])) {
+        if(isset($_POST['logout'])) {
+            session_unset();
+            session_destroy();
+            header("Location: userLogin.php");
+            exit();
+        }
+    }
+
+
+    if(isset($_POST['addgame'])) {
+        $gameManager->fileUpload($_FILES['image']);
+        $gameManager->insertGame($_POST, $_FILES['image']['name']);
+    }
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -21,18 +40,28 @@ spl_autoload_register(function ($class) {
 </head>
 <body>
 
+<?php include 'game-form.php'; ?>
+
 <div class="grid-container">
+
+            <form method="POST">
+                <button type="submit" id="Logout" name="logout">Logout</button>
+            </form>
+
+
         <div lass="grid-item" id="gridItem1">
             Homepage
             Library
             Discover
             <button type="button" id="add-button">add game</button>
+            <a href='userLogin.php'><button id="login-button">login</button></a>
+            <a href='wishlist.php'><button id='wishlist'>wishlist</button></a>
+           
         </div>
 
 
         <div lass="grid-item" id="gridItem2">
             <div class="grid-items">
-
             <div lass="grid-item" id="gridItem3">
 
 
@@ -45,7 +74,7 @@ spl_autoload_register(function ($class) {
 </div>
 <div lass="grid-item" id="gridItem5">
        <p id="bar">sidebar</p>
-       <?php $GameManager->selectDataSideBar(); ?>
+       <?php $gameManager->selectDataSideBar(); ?>
 
 </div>
 <div lass="grid-item" id="gridItem4">
@@ -53,7 +82,7 @@ spl_autoload_register(function ($class) {
 
     <div id='games-container'>
        <!-- <div> -->
-        <?php $GameManager->selectData(); ?>
+        <?php $gameManager->selectData(); ?>
      
     </div>
 
