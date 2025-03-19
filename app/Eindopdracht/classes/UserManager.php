@@ -98,17 +98,18 @@
         
         
 
-        public function AddToWIshlist($user_id, $id) {
+        public function AddToWIshlist($user_id, $game_id) {
          
           try{
-            $stmt = $this->conn->prepare("INSERT INTO user_games (user_id, id)
-            VALUES (:user_id, :id)");
+            $stmt = $this->conn->prepare("INSERT INTO user_games (user_id, game_id)
+            VALUES (:user_id, :game_id)");
             $stmt->bindParam(':user_id', $user_id);
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':game_id', $game_id);
             $stmt->execute();
             echo "toevoegen aan wishlist is gelukt";
                   
           } catch(PDOException $e) {
+
             echo "ERROR: " . $e->getMessage();
           }
           

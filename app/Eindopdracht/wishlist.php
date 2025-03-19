@@ -16,31 +16,46 @@ if(isset($_SESSION['username'])) {
 $db = new Database();
 $user = new UserManager($db->getConnection());
 
-$id = "";
+$game_id = "";
 $AddToWishlist = "";
+$user_id = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-
-echo ''.isset($_POST['AddToWishlist']);
-echo ''.(isset($_POST['id']));
+if ($_SERVER["REQUEST_METHOD"] == "POST") {    
 
 
-    if(isset($_POST['AddToWishlist']) && (isset($_POST['id']))) {
+
+    if(isset($_POST['AddToWishlist']) && (isset($_POST['game_id']) && (isset($_POST['user_id'])))) {
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         $user_name = $_SESSION['username'];
-        $id = (int) $_POST['id']; 
+        $game_id = (int) $_POST['game_id']; 
 
         echo "username: " . $user_name;
         echo "<br>";
-        echo "id: " . $id;
+        echo "game_id: " . $game_id;
+        echo "<br>";
 
         //user->whishlist functie aanroepen.
 
-        $user->AddToWIshlist($_SESSION['user_id'], $id);
+        $user->AddToWIshlist($_SESSION['user_id'], $game_id);
     } else {
         // header("location: index.php");
         echo "Game unable to be added";
+        echo 'AddToWishlist'.(isset($_POST['AddToWishlist']));
+        echo 'game_id'.(isset($_POST['game_id']));
+        echo 'game_id'.(isset($_POST['user_id']));
         exit();
     }
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="index.php"><button>homepage</button></a>
+</body>
+</html>

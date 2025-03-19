@@ -16,6 +16,8 @@
             $db = new Database();
             $gamesOphalen = new GameManager($db->getConnection());
             $gameDetails = $gamesOphalen->get_game_details($id);
+
+
             if ($gameDetails) {
                 echo "<h1>{$gameDetails['title']}</h1>";
                 echo "<img src='uploads/{$gameDetails['image']}' alt='{$gameDetails['title']}'>";
@@ -42,10 +44,22 @@
 </head>
 <body>
 
-<form method="POST">
-    <input type="hidden" name="id" id="id" value=""> 
-    <button type="submit" id="AddToWishlist" name="AddToWishlist" value="AddToWishlist" action="wishlist.php">ADD to Wishlist</button>
+<?php
+    $gameId = $id; // Example game ID (get it from your database)
+    $userId = $_SESSION['user_id']; // Assuming the user is logged in
+?>
+
+
+<form method="POST"  action="wishlist.php">
+    <input type="text" name="game_id" id="game_id" value=""> 
+    <input type="text" name="user_id" id="user_id" value="">
+    <button type="submit" id="AddToWishlist" name="AddToWishlist" value="AddToWishlist">ADD to Wishlist</button>
 </form>
+
+<script>
+    document.getElementById("game_id").value = "<?php echo $gameId; ?>";
+    document.getElementById("user_id").value = "<?php echo $userId; ?>";
+</script>
 
 </body>
 </html>
