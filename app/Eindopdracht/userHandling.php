@@ -1,7 +1,13 @@
 <?php
 
-include 'classes/UserManager.php';
-include 'classes/Database.php';
+session_start();
+
+spl_autoload_register(function ($class) {
+  include 'classes/' . $class . '.php';
+});
+
+$db = new Database();
+$user = new UserManager($db->getConnection());
 
 if ($_SERVER ["REQUEST_METHOD"] == "POST") {
 
@@ -12,9 +18,6 @@ if ($_SERVER ["REQUEST_METHOD"] == "POST") {
        
       $username = htmlspecialchars($username);
 
-      $Usermanager = "login";
-
-      $user = new UserManager();
       $user->login($username,$password);
        
 
@@ -25,12 +28,7 @@ if ($_SERVER ["REQUEST_METHOD"] == "POST") {
  
        $username = htmlspecialchars($username);
        $hash = password_hash($password, PASSWORD_DEFAULT);
-
-      
-        $db = new Database();
-        $connection = $db->getConnection();
-
-       $user = new UserManager();
+     
        $user->insertUser($username,$hash);
      }
     }     

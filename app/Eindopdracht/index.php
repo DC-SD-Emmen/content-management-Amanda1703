@@ -7,7 +7,7 @@ spl_autoload_register(function ($class) {
 });
 
 $db = new Database();
-$gameManager = new GameManager($db);
+$gameManager = new GameManager($db->getConnection());
 
 if ($_SERVER ["REQUEST_METHOD"] == "POST") {
 

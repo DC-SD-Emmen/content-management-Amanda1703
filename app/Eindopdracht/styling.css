@@ -15,7 +15,6 @@ h1{
 
 p{
     color: white;
-    padding-left: 33%;
 }
 
 .flex{
@@ -48,7 +47,7 @@ p{
 
 .picture{
     height: 90%;
-    width: 90%;
+    width: 80%;
     margin: 30px;
     object-fit:cover;
 }
@@ -113,7 +112,6 @@ p{
 
 #gridItem5{
     background-color: rgb(246, 181, 181);
-    border-radius: 10px;
 }
 
 #gridItem1 {

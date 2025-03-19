@@ -4,11 +4,8 @@
 
         private $conn;
 
-        public function __construct() {
-          session_start();
-          include_once 'Database.php';
-          $dbConnectie = new Database();
-            $this->conn = $dbConnectie->getconnection();
+        public function __construct($conn) {
+            $this->conn = $conn;
         }
 
         //maakt een public funtie aan voor username en password en bind daarna de sql en bind parameters aan.
@@ -33,20 +30,52 @@
         }
 
         public function login($username, $password) {
-            $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
-            $stmt->bindParam(':username', $username); 
-            $stmt->execute();
+          try {
+              // Prepare the SQL query
+              $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
+              $stmt->bindParam(':username', $username); 
+              $stmt->execute();
+      
+              // Fetch the user data
+              $user = $stmt->fetch(PDO::FETCH_ASSOC);
+      
+              // Check if the user exists and password is correct
+              if ($user && password_verify($password, $user['password'])) {
+                  // Start the session if not already started
+                  if (session_status() == PHP_SESSION_NONE) {
+                      session_start();
+                  }
+                  
+                  // Set session username
+                  $_SESSION['username'] = $user['username'];
 
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            if ($user && password_verify($password, $user['password'])) {
-              $_SESSION['username'] = $user['username'];
-              header("Location: index.php");
-            } else {
-              echo "Password or username incorrect";
+                  $_SESSION['user_id'] = $user['id'];
+
+                  $this->checkSession();
+      
+                  // Redirect to the home page
+                  header("Location: index.php");
+                  exit();
+              } else {
+                  // If username or password is incorrect
+                  throw new Exception("Password or username incorrect.");
+              }
+          } catch (Exception $e) {
+              // Catch any exceptions and display the error message
+              echo "Error: " . $e->getMessage();
               exit();
-            }
           }
+      }
+      
+      // This function can be used to check if the session is correctly set
+      public function checkSession() {
+          if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+              return true;
+          } else {
+              echo "Session not set or username missing.";
+              exit();
+          }
+      }
         
         //selects de data en slaat het op in de userlogin database.
         public function selectData() {
@@ -65,7 +94,25 @@
             } catch(PDOException $e) {
               echo "Error: " . $e->getMessage();
             }
-        }     
+        }
+        
+        
+
+        public function AddToWIshlist($user_id, $id) {
+         
+          try{
+            $stmt = $this->conn->prepare("INSERT INTO user_games (user_id, id)
+            VALUES (:user_id, :id)");
+            $stmt->bindParam(':user_id', $user_id);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            echo "toevoegen aan wishlist is gelukt";
+                  
+          } catch(PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+          }
+          
+      }
         
     }
            

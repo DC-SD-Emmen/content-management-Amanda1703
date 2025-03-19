@@ -4,8 +4,8 @@
 
       private $conn;
 
-      public function __construct(Database $db) {
-        $this->conn = $db->getConnection();
+      public function __construct($conn) {
+        $this->conn = $conn;
       }
 
       public function insertGame($data, $imageName) {
