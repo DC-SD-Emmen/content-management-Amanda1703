@@ -51,6 +51,7 @@
 
                   $_SESSION['user_id'] = $user['id'];
 
+
                   $this->checkSession();
       
                   // Redirect to the home page
@@ -114,7 +115,65 @@
           }
           
       }
-        
+
+      public function Wishlist($user_id) {
+        echo gettype($user_id);
+        // SQL-query voorbereiden
+        $stmt = $this->conn->prepare("SELECT user_games.user_id, games.title FROM user_games INNER JOIN games ON user_games.game_id = games.id WHERE user_games.user_id = :user_id");
+        $stmt->bindParam(':user_id', $user_id);
+    
+        // Voer de query uit
+        $stmt->execute();
+    
+        // Verkrijg alle resultaten in een associatieve array
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Controleren of er games zijn gevonden
+        if (count($result) > 0) {
+            echo "<table border='1'>";
+            echo "<tr><th>Title</th><th>User ID</th></tr>";
+    
+            // Loop door de resultaten en voeg elke game toe aan de tabel
+            foreach ($result as $rgame) {
+                echo "<tr>";
+                echo "<td>" . htmlspecialchars($rgame['title']) . "</td>";
+                echo "<td>" . htmlspecialchars($rgame['user_id']) . "</td>";
+                echo "</tr>";
+            }
+    
+            echo "</table>";
+        } else {
+            echo "Geen wishlisted games gevonden voor deze gebruiker.";
+        }
+    }
+    
+
+      public function delete($user_id) {
+
+        try{
+          $stmt = $this->conn->prepare("DELETE FROM user_games WHERE user_id = :user_id");
+          $stmt->bindParam(':user_id', $user_id);
+
+          $stmt->execute();
+        } catch (PDOException $e) {
+          echo "error" . $e->getMessage();
+        }
+      } 
+
+      
+    public function update($username, $password) {
+
+      try{
+        $stmt = $this->conn->prepare("UPDATE users SET username = :username, password = :password WHERE username = :username");
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':password', $password);
+
+        $stmt->execute();
+      } catch (PDOException $e) {
+        echo "error" . $e->getMessage();
+      }
+    }
+  
     }
            
 ?>

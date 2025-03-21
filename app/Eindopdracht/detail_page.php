@@ -1,9 +1,9 @@
 <?php
-    include 'wishlist.php';
-
     spl_autoload_register(function ($class) {
         include 'classes/' . $class . '.php';
     });
+
+    session_start();
 
     
     $id = isset($_GET['id']) ? $_GET['id'] : 0;
@@ -51,15 +51,22 @@
 
 
 <form method="POST"  action="wishlist.php">
-    <input type="text" name="game_id" id="game_id" value=""> 
-    <input type="text" name="user_id" id="user_id" value="">
+    <input type="hidden" name="game_id" id="game_id" value="<?php echo $gameId; ?>"> 
+    <input type="hidden" name="user_id" id="user_id" value="<?php echo $userId; ?>">
     <button type="submit" id="AddToWishlist" name="AddToWishlist" value="AddToWishlist">ADD to Wishlist</button>
 </form>
 
-<script>
-    document.getElementById("game_id").value = "<?php echo $gameId; ?>";
-    document.getElementById("user_id").value = "<?php echo $userId; ?>";
-</script>
+<form method="POST" action="delete.php">
+    <input type="hidden" name="game_id" id="game_id" value="<?php echo $gameId; ?>">
+    <input type="hidden" name="user_id" id="user_id" value="<?php echo $userId; ?>">
+    <button type="submit" id="Delete" name="delete">Delete from wishlist</button>
+</form>
 
+<form method="POST" action="update.php">
+    <input type="hidden" name="username" id="username" value="<?php echo $username; ?>">
+    <input type="hidden" name="upassword" id="password" value="<?php echo $password; ?>">
+    <button type="submit" id="update" name="update">update username/password</button>
+</form>
+ 
 </body>
 </html>
