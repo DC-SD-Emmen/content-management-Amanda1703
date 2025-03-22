@@ -21,6 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $user_id = $_POST['user_id'];
         $userManager->delete($user_id);
+
+        echo "game succesfully deleted!";
     }
 } else {
         echo 'unable to be deleted';

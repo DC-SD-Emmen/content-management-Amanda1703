@@ -14,7 +14,6 @@ h1 {
 
 body {
     background-color: rgb(126, 123, 124);
-
 }
 
 img {
@@ -23,3 +22,24 @@ img {
     height: 260px;
     width: 260px;
 }
+
+#AddToWishlist{
+    background: none;
+    border: none;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+#delete {
+    background: none;
+    border: none;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    cursor: pointer;
+    border: 1px solid white;
+}
+

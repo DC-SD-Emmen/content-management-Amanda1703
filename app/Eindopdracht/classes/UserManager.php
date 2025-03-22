@@ -9,17 +9,21 @@
         }
 
         //maakt een public funtie aan voor username en password en bind daarna de sql en bind parameters aan.
-        public function insertUser($username, $password) {
+        public function insertUser($username, $password, $email) {
             $username = htmlspecialchars($username);
             //INSERT sql statement maken
             //$this-conn gebruiken om de SQL naar database te versturen
             //kijken of het gelukt is
             //feedback geven aan de gebruiker of het is gelukt of niet.
                 try {
+
+                  echo "DEBUG: Username: $username, Password: $password, Email: $email<br>";
+
                // prepare sql and bind parameters
-                $stmt = $this->conn->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+                $stmt = $this->conn->prepare("INSERT INTO users (username, password, email) VALUES (:username, :password, :email)");
                 $stmt->bindParam(':username', $username);
-                $stmt->bindParam(':password', $password);
+                $stmt->bindParam(':password', $password );
+                $stmt->bindParam(':email', $email);
                 $stmt->execute();
                 echo "New records created successfully";
             } catch(PDOException $e) {
@@ -161,10 +165,11 @@
       } 
 
       
-    public function update($username, $password) {
+    public function update($username, $password, $id) {
 
       try{
-        $stmt = $this->conn->prepare("UPDATE users SET username = :username, password = :password WHERE username = :username");
+        $stmt = $this->conn->prepare("UPDATE users SET username = :username, password = :password WHERE id = :id");
+        $stmt->bindParam('id', $id);
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $password);
 

@@ -1,0 +1,33 @@
+body {
+    background-color: grey;
+    display:flex;
+    justify-content: center;
+}
+
+
+#login-button {
+    background: none;
+    border: none;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#register {
+    background: none;
+    border: none;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#update {
+    background: none;
+    border: none;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    cursor: pointer;
+}

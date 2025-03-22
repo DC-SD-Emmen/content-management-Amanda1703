@@ -15,21 +15,22 @@ if ($_SERVER ["REQUEST_METHOD"] == "POST") {
 
       $username = $_POST['username'];
       $password = $_POST['password']; 
-       
+      
       $username = htmlspecialchars($username);
 
-      $user->login($username,$password);
+      $user->login($username,$password,);
        
 
     }elseif (isset($_POST["register"])) {
            
        $username = $_POST['username'];
        $password = $_POST['password'];
+       $email = $_POST['email'];
  
        $username = htmlspecialchars($username);
        $hash = password_hash($password, PASSWORD_DEFAULT);
      
-       $user->insertUser($username,$hash);
+       $user->insertUser($username,$hash, $email);
      }
     }     
 ?>

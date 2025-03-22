@@ -5,16 +5,19 @@ td {
 
 body {
     background-color: rgb(138, 135, 136);
-    /* height: 4000px; */
 }
 
 h1{
     color: white;
-    padding-left: 50%;
+    padding-left: 40%;
 }
 
 p{
     color: white;
+}
+
+h5{
+    padding-left: 23%;
 }
 
 .flex{
@@ -133,3 +136,21 @@ p{
     font-size: 25px;
     cursor: pointer;
 }
+
+#wishlist {
+    background: none;
+    border: none;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#Logout {
+    background: none;
+    border: none;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    cursor: pointer;
+} 

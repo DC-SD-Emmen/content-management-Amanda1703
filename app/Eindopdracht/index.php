@@ -43,7 +43,7 @@ if ($_SERVER ["REQUEST_METHOD"] == "POST") {
 <?php include 'game-form.php'; ?>
 
 <div class="grid-container">
-
+            
             <form method="POST">
                 <button type="submit" id="Logout" name="logout">Logout</button>
             </form>
@@ -60,6 +60,7 @@ if ($_SERVER ["REQUEST_METHOD"] == "POST") {
         </div>
 
 
+
         <div lass="grid-item" id="gridItem2">
             <div class="grid-items">
             <div lass="grid-item" id="gridItem3">
@@ -69,7 +70,7 @@ if ($_SERVER ["REQUEST_METHOD"] == "POST") {
 
         <h1>Gamelibrary</h1>
 
-        <p>Here in this gamelibrary you have a good and direct overview of your games.</p>
+        <h5>Here in this gamelibrary you have a good and direct overview of your games.</h5>
 </div>
 </div>
 <div lass="grid-item" id="gridItem5">

@@ -61,12 +61,6 @@
     <input type="hidden" name="user_id" id="user_id" value="<?php echo $userId; ?>">
     <button type="submit" id="Delete" name="delete">Delete from wishlist</button>
 </form>
-
-<form method="POST" action="update.php">
-    <input type="hidden" name="username" id="username" value="<?php echo $username; ?>">
-    <input type="hidden" name="upassword" id="password" value="<?php echo $password; ?>">
-    <button type="submit" id="update" name="update">update username/password</button>
-</form>
  
 </body>
 </html>
