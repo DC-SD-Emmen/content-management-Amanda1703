@@ -9,6 +9,7 @@ if ($_SERVER ["REQUEST_METHOD"] == "POST") {
 
 }
 
+//controlleert of er de user is ingelogd.
 if (isset($_SESSION['username'])) {
     echo "hallo " . $_SESSION['username'];
 

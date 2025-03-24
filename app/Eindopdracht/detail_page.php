@@ -45,8 +45,8 @@
 <body>
 
 <?php
-    $gameId = $id; // Example game ID (get it from your database)
-    $userId = $_SESSION['user_id']; // Assuming the user is logged in
+    $gameId = $id; 
+    $userId = $_SESSION['user_id'];
 ?>
 
 

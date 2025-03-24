@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h2>Wishlist</h2>
 
     <?php    
-    $user->Wishlist($_SESSION['user_id']);
+        $user->Wishlist($_SESSION['user_id']);
     ?>
 
     <a href="index.php" class="homepage">homepage</a>

@@ -44,3 +44,7 @@ tr:nth-child(even) {
 tr{
    border-radius: 15px;
 }
+
+.game-image {
+   width: 200px;
+}

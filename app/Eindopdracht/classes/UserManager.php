@@ -119,9 +119,9 @@
       }
 
       public function Wishlist($user_id) {
-        echo gettype($user_id);
+        
         // SQL-query voorbereiden
-        $stmt = $this->conn->prepare("SELECT user_games.user_id, games.title FROM user_games INNER JOIN games ON user_games.game_id = games.id WHERE user_games.user_id = :user_id");
+        $stmt = $this->conn->prepare("SELECT * FROM user_games INNER JOIN games ON user_games.game_id = games.id WHERE user_games.user_id = :user_id");
         $stmt->bindParam(':user_id', $user_id);
     
         // Voer de query uit
@@ -138,6 +138,7 @@
             // Loop door de resultaten en voeg elke game toe aan de tabel
             foreach ($result as $rgame) {
                 echo "<tr>";
+                echo "<td><img class='game-image' src='uploads/".$rgame['image']."'>";
                 echo "<td>" . htmlspecialchars($rgame['title']) . "</td>";
                 echo "<td>" . htmlspecialchars($rgame['user_id']) . "</td>";
                 echo "</tr>";
