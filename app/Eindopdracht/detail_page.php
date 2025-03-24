@@ -61,6 +61,8 @@
     <input type="hidden" name="user_id" id="user_id" value="<?php echo $userId; ?>">
     <button type="submit" id="Delete" name="delete">Delete from wishlist</button>
 </form>
+
+<a href="index.php" class="homepage">Homepage</a>
  
 </body>
 </html>

@@ -11,12 +11,12 @@
 
 <div class="reg">
     <form id="registpage" method="post" action="userHandling.php">
-        <label for="email">email</label><br>
-        <input type="email" id="email" name="email" required><br>
-        <label for="username">username</label><br>
-        <input type="text" id="username" name="username" required><br>
-        <label for="password">password</label><br>
-        <input type="password" id="password" name="password" required><br>
+        <label for="email"></label><br>
+        <input type="email" id="email" name="email" placeholder="email" required><br>
+        <label for="username"></label><br>
+        <input type="text" id="username" name="username" placeholder="username"required><br>
+        <label for="password"></label><br>
+        <input type="password" id="password" name="password" placeholder="password" required><br>
         <input type="submit" name="register" id="register" value="register"></input>
     </form> 
 </div>

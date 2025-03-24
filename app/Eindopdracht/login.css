@@ -1,33 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 body {
     background-color: grey;
     display:flex;
     justify-content: center;
+    background-image: url('uploads/cute-grey-6uvin0814oixy8vl.jpg');
+    font-family: 'Poppins', sans-serif;
 }
 
 
 #login-button {
     background: none;
     border: none;
-    color: white;
-    font-family: "Times New Roman", Times, serif;
+    color: rgb(78, 77, 77);
+    font-family: "Poppins", sans-serif;
     font-size: 25px;
     cursor: pointer;
+    margin-left: 41%;
 }
 
 #register {
     background: none;
     border: none;
-    color: white;
-    font-family: "Times New Roman", Times, serif;
+    color: rgb(78, 77, 77);
     font-size: 25px;
     cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    margin-left: 36%;
 }
 
 #update {
     background: none;
     border: none;
     color: white;
-    font-family: "Times New Roman", Times, serif;
     font-size: 25px;
     cursor: pointer;
+    font-family: "Poppins", sans-serif;
 }
+
+.log {
+    background-color: pink;
+    border: 2px solid rgb(0, 0, 0);
+    box-shadow: 0 10px 15px rgba(148, 69, 170, 0.5);
+    margin-top: 18%;
+    margin-right: 15%;
+    width: 30%;
+}
+
+input {
+    margin-left: 30%;
+    border-radius: 15px;
+    padding: 6px;
+    height: 10%;
+    font-family: "Poppins", sans-serif;
+    transition: 0.3 ease-in-out;
+}
+
+input:focus {
+    background-color: rgba(156, 220, 237, 0.8);
+}
+
+
+button {    
+    background-color: rgb(193, 193, 255);
+    height: 10%;    
+    font-family: "Poppins", sans-serif;
+    transition: 0.3 ease-in-out;
+}
+
+.reg{
+    background-color: pink;
+    border: 2px solid rgb(0, 0, 0);
+    box-shadow: 0 10px 15px rgba(113, 56, 131, 0.5);
+    margin-top: 15%;
+    margin-right: 5%;
+    width: 30%;
+}
+
+.upd{
+background-color: pink;
+border: 2px solid rgb(0, 0, 0);
+box-shadow: 0 10px 15px rgba(123, 60, 140, 0.5);
+margin-top: 15%;
+margin-right: 5%;
+width: 30%;
+height: 20%;
+}
+
+#update{
+    background: none;
+    border: none;
+    color: rgb(78, 77, 77);
+    font-size: 25px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    margin-left: 13%;
+    margin-top: 7%;
+    transition: ease-in-out 0.3s;
+}
+
+#update:hover{
+    font-size: 27px;
+}
+
+#password1{
+    padding-top: 15px;
+    margin-left: 100px;
+
+}
+
+#username1 {
+    padding-top: 20px;
+    margin-left: 100px;
+}
+
+
+#login-button:hover {
+    font-size: 30px;
+}
+
+#register:hover {
+    font-size: 30px;
+}
+

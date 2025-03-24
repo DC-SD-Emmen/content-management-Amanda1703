@@ -7,16 +7,16 @@
     <title>Form</title>
 </head>
 <body>
-<a href="userregister.php"><button>register</button></a>
-<a href="updateform.php"><button>UpdateForm</button></a>
 
+<a href="userregister.php" id="button1"><button>register</button></a>
+<a href="updateform.php" id="button2"><button>UpdateForm</button></a>
 
 <div class="log">
     <form id="Login" method="post" action="userHandling.php"> 
-        <label for=username>username</Label><br>
-        <input type="text" id="username" name="username" required><br>
-        <label for= "password">password</label><br>
-        <input type="password" id="password" name="password" required><br>
+        <label for=username></Label><br>
+        <input type="text" id="username" name="username" placeholder="username" required><br>
+        <label for= "password"></label><br>
+        <input type="password" id="password" name="password" placeholder="password" required><br>
         <input type="submit" name="login" id="login-button" value="login" ></input>
     </form>
 </div>

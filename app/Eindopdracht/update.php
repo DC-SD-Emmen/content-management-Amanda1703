@@ -10,7 +10,6 @@ $db = new Database();
 
 $UserManager = new UserManager($db->getConnection());
 
-$id = "";
 $username = "";
 $password = "";
 
@@ -19,11 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     var_dump($_POST);
 
     if (isset($_POST['update'])) {
-        $id = $_SESSION['id'];
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $UserManager->update($username, $password, $id);
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        $UserManager->update($username, $hash);
 
         echo 'username or password successfully updated';
     }

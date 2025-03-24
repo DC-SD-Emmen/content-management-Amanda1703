@@ -1,7 +1,3 @@
-<?php
-$id = "";
-$id = $_GET['id'] ?? $_POST['id'] ?? null;
-?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,14 +6,14 @@ $id = $_GET['id'] ?? $_POST['id'] ?? null;
     <title>Document</title>
 </head>
 <body>
+
     <a href="userLogin.php"><button>login</button></a>
 
 <div class="upd">
     <form id="update" method="POST" action="update.php">
-        <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
-        <input type="text" name="username" id="username" value="">
-        <input type="text" name="password" id="password" value="">
-        <button type="submit" id="update" name="update">update username/password</button>
+        <input type="text" name="username" id="username1"placeholder="username" value="">
+        <input type="text" name="password" id="password1" placeholder="password" value="">
+        <button type="submit" id="update" name="update">update password</button>
     </form>
 </div>
 

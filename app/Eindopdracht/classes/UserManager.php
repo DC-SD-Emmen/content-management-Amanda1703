@@ -17,8 +17,6 @@
             //feedback geven aan de gebruiker of het is gelukt of niet.
                 try {
 
-                  echo "DEBUG: Username: $username, Password: $password, Email: $email<br>";
-
                // prepare sql and bind parameters
                 $stmt = $this->conn->prepare("INSERT INTO users (username, password, email) VALUES (:username, :password, :email)");
                 $stmt->bindParam(':username', $username);
@@ -111,7 +109,7 @@
             $stmt->bindParam(':user_id', $user_id);
             $stmt->bindParam(':game_id', $game_id);
             $stmt->execute();
-            echo "toevoegen aan wishlist is gelukt";
+            // echo "toevoegen aan wishlist is gelukt";
                   
           } catch(PDOException $e) {
 
@@ -152,11 +150,12 @@
     }
     
 
-      public function delete($user_id) {
+      public function delete($user_id, $game_id) {
 
         try{
-          $stmt = $this->conn->prepare("DELETE FROM user_games WHERE user_id = :user_id");
+          $stmt = $this->conn->prepare("DELETE FROM user_games WHERE user_id = :user_id AND game_id = :game_id");
           $stmt->bindParam(':user_id', $user_id);
+          $stmt->bindParam(':game_id', $game_id);
 
           $stmt->execute();
         } catch (PDOException $e) {
@@ -164,12 +163,22 @@
         }
       } 
 
+      public function select($username, $password) {
+        $stmt = $this->conn->prepare("SELECT password FROM users WHERE username = :username");
+        $stmt->bindParam(':username', $username);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        print_r($username);
+      }
+
       
-    public function update($username, $password, $id) {
+    public function update($username, $password) {
 
       try{
-        $stmt = $this->conn->prepare("UPDATE users SET username = :username, password = :password WHERE id = :id");
-        $stmt->bindParam('id', $id);
+        $stmt = $this->conn->prepare("UPDATE users SET password = :password WHERE username = :username");
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $password);
 

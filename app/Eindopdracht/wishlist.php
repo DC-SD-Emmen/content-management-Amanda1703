@@ -9,7 +9,7 @@ $user_id = isset($_GET['user_id']) ? $_GET['user_id'] : 0;
 
 //is er een user ingelogd?
 if(isset($_SESSION['user_id'])) {
-    echo "Hallo " . $_SESSION['user_id'];
+    // echo "Hallo " . $_SESSION['user_id'];
 } else {
     header('Location: userLogin.php');
     exit();
@@ -24,7 +24,7 @@ $user_id = "";
 
 // Set session variables
 
-echo "Session variables are set.";
+// echo "Session variables are set.";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {    
@@ -37,10 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        
         $game_id = $_POST['game_id'];
 
-        echo "username: " . $user_name;
-        echo "<br>";
-        echo "game_id: " . $game_id;
-        echo "<br>";
+        // echo "username: " . $user_name;
+        // echo "<br>";
+        // echo "game_id: " . $game_id;
+        // echo "<br>";
 
         //user->whishlist functie aanroepen.
         $user->AddToWIshlist($_SESSION['user_id'], $game_id);
@@ -61,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="wishlist.css">
     <title>Document</title>
 </head>
 <body>
@@ -70,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user->Wishlist($_SESSION['user_id']);
     ?>
 
-    <a href="index.php"><button>homepage</button></a>
+    <a href="index.php" class="homepage">homepage</a>
 
 </body>
 </html>

@@ -31,6 +31,7 @@ if ($_SERVER ["REQUEST_METHOD"] == "POST") {
        $hash = password_hash($password, PASSWORD_DEFAULT);
      
        $user->insertUser($username,$hash, $email);
+
      }
     }     
 ?>
